@@ -16,6 +16,8 @@
 #include <malloc.h>
 #include <memory.h>
 #include <tchar.h>
-
+#include "Wtsapi32.h"
+#include "AccCtrl.h"
+#include "AclApi.h"
 
 // TODO: reference additional headers your program requires here

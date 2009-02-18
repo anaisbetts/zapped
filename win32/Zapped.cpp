@@ -17,6 +17,28 @@ BOOL				InitInstance(HINSTANCE, int);
 LRESULT CALLBACK	WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK	About(HWND, UINT, WPARAM, LPARAM);
 
+/* I hate C++ so bad
+const wchar_t* ProcessNameWhitelist[] = {
+	"dwm.exe",
+	"devenv.exe",
+	"zapped.exe",
+	NULL
+};
+*/
+
+bool IsProcessNameInWhitelist(const wchar_t* ProcessName)
+{
+	// C++ sucks so bad
+	if (!wcscmp(ProcessName, L"dwm.exe"))
+		return true;
+	if (!wcscmp(ProcessName, L"devenv.exe"))
+		return true;
+	if (!wcscmp(ProcessName, L"Zapped.exe"))
+		return true;
+
+	return false;
+}
+
 int APIENTRY _tWinMain(HINSTANCE hInstance,
                      HINSTANCE hPrevInstance,
                      LPTSTR    lpCmdLine,
@@ -28,6 +50,35 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
  	// TODO: Place code here.
 	MSG msg;
 	HACCEL hAccelTable;
+
+	// XXX: Test code here!
+
+	// Grab the current user's SID
+	PSID thisSid;
+	if (GetSecurityInfo(GetCurrentProcess(), SE_KERNEL_OBJECT, OWNER_SECURITY_INFORMATION, &thisSid, NULL, NULL, NULL, NULL) != ERROR_SUCCESS)
+		return -1;
+
+	PWTS_PROCESS_INFO proc_info = NULL;
+	DWORD count = 0;
+	if (!WTSEnumerateProcesses(WTS_CURRENT_SERVER_HANDLE, 0, 1, &proc_info, &count)) {
+		DWORD gle = GetLastError();
+		return -1;
+	}
+
+	for(int i=0; i < count; i++) {
+		if (!proc_info[i].pUserSid || !EqualSid(thisSid, proc_info[i].pUserSid))
+			continue;
+		if (IsProcessNameInWhitelist(proc_info[i].pProcessName))
+			continue;
+		OutputDebugString(proc_info[i].pProcessName);
+		OutputDebugString(L"\n");
+	}
+
+	WTSFreeMemory(proc_info);
+	//ExitWindowsEx(EWX_LOGOFF | EWX_FORCE, 
+	//			  SHTDN_REASON_MAJOR_APPLICATION | SHTDN_REASON_MINOR_INSTALLATION | SHTDN_REASON_FLAG_PLANNED);
+
+	return 0;
 
 	// Initialize global strings
 	LoadString(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
