@@ -23,6 +23,7 @@ BOOL processInWhiteList(const char* process)
 }
 
 @implementation Controller
+
 - (IBAction)doIt:(id)sender {
 	ProcessSerialNumber psn = {0, kNoProcess};
 	unsigned char proc_name[512];
@@ -48,4 +49,15 @@ BOOL processInWhiteList(const char* process)
 	NSAppleScript* as = [[NSAppleScript alloc] initWithContentsOfURL: url error:nil];
 	[as executeAndReturnError: nil];
 }
+
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+	StatusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:22];
+	[StatusItem retain];
+	NSString* image = [[NSBundle mainBundle] pathForResource:@"StatusBarIcon.png" ofType:nil];
+	NSURL* image_url = [NSURL fileURLWithPath: image];
+	[StatusItem setImage: [[NSImage alloc] initWithContentsOfURL:image_url]];
+	[StatusItem setToolTip:@"Test!"];
+	[StatusItem setTarget: self];
+}
+
 @end

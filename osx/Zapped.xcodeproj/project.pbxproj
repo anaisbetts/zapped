@@ -14,6 +14,7 @@
 		DA21024B0F4BBC6A00E51C77 /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = DA21024A0F4BBC6A00E51C77 /* Controller.m */; };
 		DA2102740F4BBD2500E51C77 /* LogOut.scpt in Resources */ = {isa = PBXBuildFile; fileRef = DAB07E860F4BB36C001B0219 /* LogOut.scpt */; };
 		DA5A0E070F4BA39A00E7C791 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5A0E060F4BA39A00E7C791 /* Carbon.framework */; };
+		DA60ADC80F4BC6DA0039327F /* StatusBarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA60ADC70F4BC6DA0039327F /* StatusBarIcon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		DA2102490F4BBC6A00E51C77 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
 		DA21024A0F4BBC6A00E51C77 /* Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Controller.m; sourceTree = "<group>"; };
 		DA5A0E060F4BA39A00E7C791 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		DA60ADC70F4BC6DA0039327F /* StatusBarIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StatusBarIcon.png; path = ../data/StatusBarIcon.png; sourceTree = SOURCE_ROOT; };
 		DAB07E860F4BB36C001B0219 /* LogOut.scpt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.scpt; path = LogOut.scpt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -49,6 +51,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DA2102490F4BBC6A00E51C77 /* Controller.h */,
+				DA21024A0F4BBC6A00E51C77 /* Controller.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -88,8 +92,6 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				DA2102490F4BBC6A00E51C77 /* Controller.h */,
-				DA21024A0F4BBC6A00E51C77 /* Controller.m */,
 			);
 			name = Zapped;
 			sourceTree = "<group>";
@@ -106,6 +108,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DA60ADC70F4BC6DA0039327F /* StatusBarIcon.png */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
@@ -169,6 +172,7 @@
 				DA2102740F4BBD2500E51C77 /* LogOut.scpt in Resources */,
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
+				DA60ADC80F4BC6DA0039327F /* StatusBarIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
