@@ -202,6 +202,46 @@
 			<key>Content</key>
 			<dict>
 				<key>PBXProjectModuleGUID</key>
+				<string>DA60ADA00F4BC4420039327F</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>Controller.h</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>DA60ADA10F4BC4420039327F</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>Controller.h</string>
+						<key>_historyCapacity</key>
+						<integer>0</integer>
+						<key>bookmark</key>
+						<string>DA293B8B0F5103790038A9D3</string>
+						<key>history</key>
+						<array>
+							<string>DA293B460F50FDF90038A9D3</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {907, 781}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>15 51 907 822 0 0 1440 878 </string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
 				<string>DA92A1830F50F44F00448460</string>
 				<key>PBXProjectModuleLabel</key>
 				<string>PopupController.m</string>
@@ -216,7 +256,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>DA293B7F0F51032B0038A9D3</string>
+						<string>DA293B8C0F5103790038A9D3</string>
 						<key>history</key>
 						<array>
 							<string>DA92A1970F50F74100448460</string>
@@ -252,46 +292,6 @@
 				<false/>
 				<key>RubberWindowFrame</key>
 				<string>16 51 907 822 0 0 1440 878 </string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Content</key>
-			<dict>
-				<key>PBXProjectModuleGUID</key>
-				<string>DA60ADA00F4BC4420039327F</string>
-				<key>PBXProjectModuleLabel</key>
-				<string>Controller.h</string>
-				<key>PBXSplitModuleInNavigatorKey</key>
-				<dict>
-					<key>Split0</key>
-					<dict>
-						<key>PBXProjectModuleGUID</key>
-						<string>DA60ADA10F4BC4420039327F</string>
-						<key>PBXProjectModuleLabel</key>
-						<string>Controller.h</string>
-						<key>_historyCapacity</key>
-						<integer>0</integer>
-						<key>bookmark</key>
-						<string>DA293B800F51032B0038A9D3</string>
-						<key>history</key>
-						<array>
-							<string>DA293B460F50FDF90038A9D3</string>
-						</array>
-					</dict>
-					<key>SplitCount</key>
-					<string>1</string>
-				</dict>
-				<key>StatusBarVisibility</key>
-				<true/>
-			</dict>
-			<key>Geometry</key>
-			<dict>
-				<key>Frame</key>
-				<string>{{0, 20}, {907, 781}}</string>
-				<key>PBXModuleWindowStatusBarHidden2</key>
-				<false/>
-				<key>RubberWindowFrame</key>
-				<string>15 51 907 822 0 0 1440 878 </string>
 			</dict>
 		</dict>
 	</array>
@@ -425,7 +425,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>DA293B7A0F51032B0038A9D3</string>
+										<string>DA293B8A0F5103790038A9D3</string>
 										<key>history</key>
 										<array>
 											<string>DA60ADC90F4BC6E70039327F</string>
@@ -648,14 +648,15 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>DA293B8D0F5103790038A9D3</string>
 		<string>DA293B310F50FB7B0038A9D3</string>
 		<string>DA293B320F50FB7B0038A9D3</string>
 		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>DA60ADA00F4BC4420039327F</string>
 		<string>DA5A0EDB0F4BA5C300E7C791</string>
-		<string>/Users/paul/Desktop/Zapped/osx/Zapped.xcodeproj</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>DA92A1830F50F44F00448460</string>
+		<string>DA60ADA00F4BC4420039327F</string>
+		<string>/Users/paul/Desktop/Zapped/osx/Zapped.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>415 173 788 504 0 0 1440 878 </string>
@@ -748,7 +749,7 @@
 			<key>WindowToolGUID</key>
 			<string>DA5A0EDB0F4BA5C300E7C791</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
