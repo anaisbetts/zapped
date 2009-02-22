@@ -1,8 +1,10 @@
 #import <Cocoa/Cocoa.h>
 
 @interface Controller : NSObject {
-	NSStatusItem* StatusItem;
 }
-- (IBAction)doIt:(id)sender;
+
+- (IBAction)executeZap:(id)sender;
+- (void)shouldHideStatusBarItemOnTimer:(NSTimer*)theTimer;
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification;
+
 @end

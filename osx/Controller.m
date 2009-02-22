@@ -24,7 +24,7 @@ BOOL processInWhiteList(const char* process)
 
 @implementation Controller
 
-- (IBAction)doIt:(id)sender {
+- (IBAction)executeZap:(id)sender {
 	ProcessSerialNumber psn = {0, kNoProcess};
 	unsigned char proc_name[512];
 	ProcessInfoRec pir = {0};
@@ -36,7 +36,7 @@ BOOL processInWhiteList(const char* process)
 	while((err = GetNextProcess(&psn)) == noErr) {
 		bzero(proc_name, 512 * sizeof(char));
 		if ((err = GetProcessInformation(&psn, &pir)) == noErr) {
-			if (processInWhiteList(proc_name))
+			if (processInWhiteList((char*)proc_name))
 				continue;
 			NSLog(@"Process Name is '%s'", pir.processName);
 			KillProcess(&psn);
@@ -51,13 +51,30 @@ BOOL processInWhiteList(const char* process)
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-	StatusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:22];
-	[StatusItem retain];
+	NSStatusItem* statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:175];
 	NSString* image = [[NSBundle mainBundle] pathForResource:@"StatusBarIcon.png" ofType:nil];
 	NSURL* image_url = [NSURL fileURLWithPath: image];
-	[StatusItem setImage: [[NSImage alloc] initWithContentsOfURL:image_url]];
-	[StatusItem setToolTip:@"Test!"];
-	[StatusItem setTarget: self];
+	[statusItem setImage: [[NSImage alloc] initWithContentsOfURL:image_url]];
+	[statusItem setToolTip:@"Test!"];
+	[statusItem setTitle:@"Zap is now enabled!"];
+	[statusItem setTarget: self];
+	[statusItem retain];
+	
+	// Hide the status item after 5 seconds
+	[NSTimer scheduledTimerWithTimeInterval:(NSTimeInterval)5.0
+									 target:self 
+								   selector:@selector(shouldHideStatusBarItemOnTimer:) 
+								   userInfo:statusItem
+									repeats:NO];
+	
+	// Retain the StatusItem - we'll release it in shouldHideStatusBar...
+	[statusItem retain];
+}
+
+- (void)shouldHideStatusBarItemOnTimer:(NSTimer*)theTimer {
+	NSStatusItem* item = [theTimer userInfo];
+	[[NSStatusBar systemStatusBar] removeStatusItem: item];
+	[item release];
 }
 
 @end
