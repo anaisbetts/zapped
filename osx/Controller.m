@@ -1,5 +1,7 @@
 #import "Controller.h"
 #import <Carbon/Carbon.h>
+#import "PTHotKeyCenter.h"
+#import "PTHotKey.h"
 
 const char* kProcessWhiteList[] = {
 	"loginwindow",
@@ -69,6 +71,13 @@ BOOL processInWhiteList(const char* process)
 	
 	// Retain the StatusItem - we'll release it in shouldHideStatusBar...
 	[statusItem retain];
+	
+	// Register a hotkey
+	PTHotKey* key = [[PTHotKey alloc] initWithIdentifier: self 
+												keyCombo: [PTKeyCombo keyComboWithKeyCode:0x33 modifiers: cmdKey+controlKey]];
+	[key setTarget:self];
+	[key setAction:@selector(executeZap:)];
+	[[PTHotKeyCenter sharedCenter] registerHotKey: key];
 }
 
 - (void)shouldHideStatusBarItemOnTimer:(NSTimer*)theTimer {
