@@ -50,6 +50,7 @@ BOOL processInWhiteList(const char* process)
 	NSURL* url = [NSURL fileURLWithPath: script];
 	NSAppleScript* as = [[NSAppleScript alloc] initWithContentsOfURL: url error:nil];
 	[as executeAndReturnError: nil];
+
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -60,6 +61,7 @@ BOOL processInWhiteList(const char* process)
 	[statusItem setToolTip:@"Test!"];
 	[statusItem setTitle:@"Zap is now enabled!"];
 	[statusItem setTarget: self];
+	[statusItem setMenu:popupMenu];
 	[statusItem retain];
 	
 	// Hide the status item after 5 seconds
@@ -73,17 +75,25 @@ BOOL processInWhiteList(const char* process)
 	[statusItem retain];
 	
 	// Register a hotkey
-	PTHotKey* key = [[PTHotKey alloc] initWithIdentifier: self 
-												keyCombo: [PTKeyCombo keyComboWithKeyCode:0x33 modifiers: cmdKey+controlKey]];
-	[key setTarget:self];
-	[key setAction:@selector(executeZap:)];
-	[[PTHotKeyCenter sharedCenter] registerHotKey: key];
+	hotkey = [[PTHotKey alloc] initWithIdentifier: self 
+										 keyCombo: [PTKeyCombo keyComboWithKeyCode:0x33 modifiers: cmdKey+controlKey]];
+	[hotkey setTarget:self];
+	[hotkey setAction:@selector(executeZap:)];
+	[[PTHotKeyCenter sharedCenter] registerHotKey: hotkey];
 }
 
 - (void)shouldHideStatusBarItemOnTimer:(NSTimer*)theTimer {
 	NSStatusItem* item = [theTimer userInfo];
 	[[NSStatusBar systemStatusBar] removeStatusItem: item];
 	[item release];
+}
+
+- (void)applicationWillTerminate:(NSNotification *)aNotification {
+	// Drop our hotkey
+	if (hotkey) {
+		[[PTHotKeyCenter sharedCenter] unregisterHotKey:hotkey];
+		[hotkey release];
+	}
 }
 
 @end

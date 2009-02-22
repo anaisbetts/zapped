@@ -13,6 +13,10 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		DA21024B0F4BBC6A00E51C77 /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = DA21024A0F4BBC6A00E51C77 /* Controller.m */; };
 		DA2102740F4BBD2500E51C77 /* LogOut.scpt in Resources */ = {isa = PBXBuildFile; fileRef = DAB07E860F4BB36C001B0219 /* LogOut.scpt */; };
+		DA293B260F50FB500038A9D3 /* CheckLoginItem.scpt in Resources */ = {isa = PBXBuildFile; fileRef = DA293B1F0F50FB450038A9D3 /* CheckLoginItem.scpt */; };
+		DA293B270F50FB500038A9D3 /* DeleteLoginItem.scpt in Resources */ = {isa = PBXBuildFile; fileRef = DA293B200F50FB450038A9D3 /* DeleteLoginItem.scpt */; };
+		DA293B290F50FB5F0038A9D3 /* MakeLoginItem.scpt in Resources */ = {isa = PBXBuildFile; fileRef = DA293B280F50FB5C0038A9D3 /* MakeLoginItem.scpt */; };
+		DA293B620F5100E90038A9D3 /* PopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA293B610F5100E90038A9D3 /* PopupController.m */; };
 		DA5A0E070F4BA39A00E7C791 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5A0E060F4BA39A00E7C791 /* Carbon.framework */; };
 		DA60ADC80F4BC6DA0039327F /* StatusBarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA60ADC70F4BC6DA0039327F /* StatusBarIcon.png */; };
 		DA92A15E0F50F3B800448460 /* PTHotKey.m in Sources */ = {isa = PBXBuildFile; fileRef = DA92A1590F50F3B800448460 /* PTHotKey.m */; };
@@ -33,6 +37,11 @@
 		8D1107320486CEB800E47090 /* Zapped.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zapped.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA2102490F4BBC6A00E51C77 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
 		DA21024A0F4BBC6A00E51C77 /* Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Controller.m; sourceTree = "<group>"; };
+		DA293B1F0F50FB450038A9D3 /* CheckLoginItem.scpt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.scpt; path = CheckLoginItem.scpt; sourceTree = "<group>"; };
+		DA293B200F50FB450038A9D3 /* DeleteLoginItem.scpt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.scpt; path = DeleteLoginItem.scpt; sourceTree = "<group>"; };
+		DA293B280F50FB5C0038A9D3 /* MakeLoginItem.scpt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.scpt; path = MakeLoginItem.scpt; sourceTree = "<group>"; };
+		DA293B600F5100E90038A9D3 /* PopupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupController.h; sourceTree = "<group>"; };
+		DA293B610F5100E90038A9D3 /* PopupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupController.m; sourceTree = "<group>"; };
 		DA5A0E060F4BA39A00E7C791 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		DA60ADC70F4BC6DA0039327F /* StatusBarIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StatusBarIcon.png; path = ../data/StatusBarIcon.png; sourceTree = SOURCE_ROOT; };
 		DA92A1580F50F3B800448460 /* PTHotKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTHotKey.h; sourceTree = "<group>"; };
@@ -60,6 +69,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DA293B600F5100E90038A9D3 /* PopupController.h */,
+				DA293B610F5100E90038A9D3 /* PopupController.m */,
 				DA92A1580F50F3B800448460 /* PTHotKey.h */,
 				DA92A1590F50F3B800448460 /* PTHotKey.m */,
 				DA92A15A0F50F3B800448460 /* PTHotKeyCenter.h */,
@@ -123,6 +134,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DA293B280F50FB5C0038A9D3 /* MakeLoginItem.scpt */,
+				DA293B1F0F50FB450038A9D3 /* CheckLoginItem.scpt */,
+				DA293B200F50FB450038A9D3 /* DeleteLoginItem.scpt */,
 				DA60ADC70F4BC6DA0039327F /* StatusBarIcon.png */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
@@ -184,6 +198,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA293B290F50FB5F0038A9D3 /* MakeLoginItem.scpt in Resources */,
+				DA293B260F50FB500038A9D3 /* CheckLoginItem.scpt in Resources */,
+				DA293B270F50FB500038A9D3 /* DeleteLoginItem.scpt in Resources */,
 				DA2102740F4BBD2500E51C77 /* LogOut.scpt in Resources */,
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
@@ -203,6 +220,7 @@
 				DA92A15E0F50F3B800448460 /* PTHotKey.m in Sources */,
 				DA92A15F0F50F3B800448460 /* PTHotKeyCenter.m in Sources */,
 				DA92A1600F50F3B800448460 /* PTKeyCombo.m in Sources */,
+				DA293B620F5100E90038A9D3 /* PopupController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,12 +281,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CURRENT_PROJECT_VERSION = 0.1;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
+				PRODUCT_NAME = Zapped;
 				SDKROOT = macosx10.5;
 			};
 			name = Debug;
@@ -277,11 +297,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CURRENT_PROJECT_VERSION = 0.1;
 				ENABLE_OPENMP_SUPPORT = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
+				PRODUCT_NAME = Zapped;
 				SDKROOT = macosx10.5;
 			};
 			name = Release;
