@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Zapped", "Zapped.vcproj", "{7B3C0D57-94C6-4902-A7A9-3BDF9D8DFB7F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B3C0D57-94C6-4902-A7A9-3BDF9D8DFB7F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7B3C0D57-94C6-4902-A7A9-3BDF9D8DFB7F}.Debug|Win32.Build.0 = Debug|Win32
+		{7B3C0D57-94C6-4902-A7A9-3BDF9D8DFB7F}.Release|Win32.ActiveCfg = Release|Win32
+		{7B3C0D57-94C6-4902-A7A9-3BDF9D8DFB7F}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
