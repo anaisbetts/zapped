@@ -1,16 +1,20 @@
 #import "PopupController.h"
+#import "UKLoginItemRegistry.h"
+
 @implementation PopupController
 
 + (bool)isAppSetToRunAtLogon {
-	NSString* script = [[NSBundle mainBundle] pathForResource:@"CheckLoginItem.scpt" ofType:nil];
-	NSURL* url = [NSURL fileURLWithPath: script];
-	NSAppleScript* as = [[NSAppleScript alloc] initWithContentsOfURL: url error:nil];
-	
-	return YES;
+	int ret = [UKLoginItemRegistry indexForLoginItemWithPath:[[NSBundle mainBundle] bundlePath]];
+	NSLog(@"login item index = %i", ret);
+	return (ret >= 0);
 }
 
 - (IBAction)toggleOpenAtLogon:(id)sender {
-    
+	if ([PopupController isAppSetToRunAtLogon]) {
+		[UKLoginItemRegistry removeLoginItemWithPath:[[NSBundle mainBundle] bundlePath]];
+	} else {
+		[UKLoginItemRegistry addLoginItemWithPath:[[NSBundle mainBundle] bundlePath] hideIt: NO];
+	}
 }
 
 - (void)menuWillOpen:(NSMenu *)menu {
