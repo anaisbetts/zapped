@@ -27,8 +27,8 @@ bool IsProcessNameInWhitelist(const wchar_t* ProcessName)
 	// C++ sucks so bad
 	if (!wcscmp(ProcessName, L"dwm.exe"))
 		return true;
-	if (!wcscmp(ProcessName, L"devenv.exe"))
-		return true;
+//	if (!wcscmp(ProcessName, L"devenv.exe"))
+//		return true;
 	if (!wcscmp(ProcessName, L"Zapped.exe"))
 		return true;
 
@@ -54,8 +54,14 @@ void ExecuteZap(void)
 			continue;
 		if (IsProcessNameInWhitelist(proc_info[i].pProcessName))
 			continue;
-		OutputDebugString(proc_info[i].pProcessName);
-		OutputDebugString(L"\n");
+		HANDLE hProc = OpenProcess(PROCESS_TERMINATE, FALSE, proc_info[i].ProcessId);
+		if (hProc) {
+			OutputDebugString(L"Terminating ");
+			OutputDebugString(proc_info[i].pProcessName);
+			OutputDebugString(L"\n");
+			TerminateProcess(hProc, 0);
+			CloseHandle(hProc);
+		}
 	}
 
 	WTSFreeMemory(proc_info);
@@ -81,7 +87,36 @@ HWND CreateScratchWindow(HWND hwndParent, WNDPROC wp)
 	ret = CreateWindow(TEXT("ScratchWindow"), NULL,
 			(hwndParent ? WS_CHILD : WS_OVERLAPPED),
 			0, 0, 0, 0, hwndParent, NULL, NULL, NULL);
+	SubclassWindow(ret, wp);
 	return ret;
+}
+
+DWORD WINAPI ShowNotificationIconAndDie(LPVOID lpParam)
+{
+    HWND hwnd = (HWND)lpParam;
+    HICON hNiIcon = LoadIcon(NULL, MAKEINTRESOURCE(IDI_SHIELD));    // FIXME: Load the real icon!
+    NOTIFYICONDATA nis;
+    ZeroMemory(&nis, sizeof(nis));
+    
+    // Set up the NOTIFYICONSTRUCT structure
+    nis.cbSize = sizeof(nis);
+    nis.hWnd = hwnd;
+    nis.uID = 1;
+    nis.uFlags = NIF_TIP | NIF_INFO;
+    nis.hIcon = hNiIcon;
+    //wcscpy(&nis.szTip, L"Press Ctrl-Alt-Backspace to activate Zapped!");
+    wcscpy((wchar_t*)&nis.szInfo, L"Press Ctrl-Alt-Backspace to activate Zapped!");
+	wcscpy((wchar_t*)&nis.szInfoTitle, L"Zapped");
+    nis.uVersion = NOTIFYICON_VERSION_4;
+    nis.dwInfoFlags = NIIF_INFO | NIIF_NOSOUND;
+
+    Shell_NotifyIcon(NIM_SETVERSION, &nis);
+    Shell_NotifyIcon(NIM_ADD, &nis);
+
+    // Wait 5 seconds, then blow it away
+    Sleep(5 * 1000);
+    Shell_NotifyIcon(NIM_DELETE, &nis);
+    return 0;
 }
 
 int APIENTRY _tWinMain(HINSTANCE hInstance,
@@ -96,9 +131,14 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 
 	// Create a hidden window that can retrieve our notifications
 	HWND hwnd = CreateScratchWindow(NULL, WndProc);
-	
+
 	// Register our global hotkey
-	RegisterHotKey(hwnd, 1, MOD_CONTROL | MOD_SHIFT, VK_BACK);
+	if (!RegisterHotKey(hwnd, 1, MOD_CONTROL | MOD_ALT, VK_BACK)) {
+		return -1;
+	}
+
+    // Spawn off a thread to show the balloon tip and die
+    CreateThread(NULL, 0, ShowNotificationIconAndDie, (LPVOID)hwnd, 0, NULL);
 
 	// Main message loop:
 	while (GetMessage(&msg, NULL, 0, 0)) {
@@ -143,11 +183,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		default:
 			return DefWindowProc(hWnd, message, wParam, lParam);
 		}
-		break;
-	case WM_PAINT:
-		hdc = BeginPaint(hWnd, &ps);
-		// TODO: Add any drawing code here...
-		EndPaint(hWnd, &ps);
 		break;
 	case WM_DESTROY:
 		PostQuitMessage(0);
